@@ -69,7 +69,7 @@ const Testimonials = () => {
             What Our Guests <span className="text-primary-400">Say</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Don't just take our word for it - hear from our satisfied customers
+            Don&apos;t just take our word for it - hear from our satisfied customers
           </p>
         </motion.div>
 
