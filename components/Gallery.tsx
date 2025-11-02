@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { X } from 'lucide-react';
 import { useViewMode } from '@/contexts/ViewModeContext';
+import Image from 'next/image';
 
 const Gallery = () => {
   const ref = useRef(null);
@@ -76,10 +77,11 @@ const Gallery = () => {
               whileHover={{ scale: 1.05 }}
               onClick={() => setSelectedImage(index)}
             >
-              <img
+              <Image
                 src={image.url}
                 alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-dark-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                 <p className="text-white font-semibold">{image.alt}</p>
@@ -98,19 +100,19 @@ const Gallery = () => {
             onClick={() => setSelectedImage(null)}
           >
             <button
-              className="absolute top-6 right-6 text-white hover:text-primary-400 transition-colors"
+              className="absolute top-6 right-6 text-white hover:text-primary-400 transition-colors z-10"
               onClick={() => setSelectedImage(null)}
             >
               <X size={32} />
             </button>
-            <motion.img
-              src={images[selectedImage].url}
-              alt={images[selectedImage].alt}
-              className="max-w-full max-h-full rounded-2xl"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
+            <div className="relative max-w-4xl max-h-[90vh] aspect-video">
+              <Image
+                src={images[selectedImage].url}
+                alt={images[selectedImage].alt}
+                fill
+                className="object-contain rounded-2xl"
+              />
+            </div>
           </motion.div>
         )}
       </div>

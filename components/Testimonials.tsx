@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Star, Quote } from 'lucide-react';
 import { useViewMode } from '@/contexts/ViewModeContext';
+import Image from 'next/image';
 
 const Testimonials = () => {
   const ref = useRef(null);
@@ -24,7 +25,7 @@ const Testimonials = () => {
       role: 'Regular Customer',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80',
       rating: 5,
-      text: 'I\'ve been coming here for years and it never disappoints. The ambiance is perfect for special occasions.',
+      text: 'I&apos;ve been coming here for years and it never disappoints. The ambiance is perfect for special occasions.',
     },
     {
       name: 'Emma Williams',
@@ -88,11 +89,14 @@ const Testimonials = () => {
 
               {/* Profile */}
               <div className="flex items-center gap-4 mb-6">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full object-cover border-2 border-primary-600/50"
-                />
+                <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-primary-600/50">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div>
                   <h4 className="font-semibold text-gray-100">{testimonial.name}</h4>
                   <p className="text-sm text-gray-400">{testimonial.role}</p>
@@ -108,7 +112,7 @@ const Testimonials = () => {
 
               {/* Review Text */}
               <p className="text-gray-300 leading-relaxed italic">
-                "{testimonial.text}"
+                &ldquo;{testimonial.text}&rdquo;
               </p>
             </motion.div>
           ))}

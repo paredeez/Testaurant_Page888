@@ -67,7 +67,7 @@ const About = () => {
             Our <span className="text-primary-400">Story</span>
           </h2>
           <p className={`text-gray-400 max-w-3xl mx-auto ${viewMode === 'mobile' ? 'text-base' : 'text-xl'}`}>
-            For over two decades, we've been serving exceptional dishes that blend 
+            For over two decades, we&apos;ve been serving exceptional dishes that blend 
             tradition with innovation, creating unforgettable dining experiences.
           </p>
         </motion.div>
